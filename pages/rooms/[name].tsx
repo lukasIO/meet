@@ -24,6 +24,7 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { DebugMode } from '../../lib/Debug';
 import { decodePassphrase, useServerUrl } from '../../lib/client-utils';
+import Stage from '../../lib/Stage';
 
 const PreJoinNoSSR = dynamic(
   async () => {
@@ -176,7 +177,7 @@ const ActiveRoom = ({ roomName, userChoices, onLeave }: ActiveRoomProps) => {
           audio={userChoices.audioEnabled}
           onDisconnected={onLeave}
         >
-          <VideoConference chatMessageFormatter={formatChatMessageLinks} />
+          <Stage />
           <DebugMode logLevel={LogLevel.info} />
         </LiveKitRoom>
       )}
